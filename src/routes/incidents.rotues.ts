@@ -5,7 +5,7 @@ import {
   getIncidentById,
   updateIncident,
   deleteIncident,
-} from "../controllers/incident.controller";
+} from "../controllers/incidents.controller";
 
 const router = Router();
 

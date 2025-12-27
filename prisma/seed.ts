@@ -68,7 +68,7 @@ async function main() {
         ? incidents.find((i) => i.serviceKey === "service-123")?.id
         : incidents.find((i) => i.serviceKey === "service-456")?.id;
 
-    prisma.signals.create({ data: signal });
+    await prisma.signals.create({ data: signal });
   }
 
   console.log(`Seeding finished.`);

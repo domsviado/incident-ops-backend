@@ -5,7 +5,7 @@ import {
   getSignalById,
   updateSignal,
   deleteSignal,
-} from "../controllers/signal.controller";
+} from "../controllers/signals.controller";
 
 const router = Router();
 
