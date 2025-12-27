@@ -1,0 +1,34 @@
+generator client {
+  provider   = "prisma-client"
+  output     = "./generated"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model signals {
+  id          Int      @id @default(autoincrement())
+  source      String
+  serviceKey  String
+  type        String
+  severity    String
+  value       Float?
+  window      String?
+  timestamp   DateTime @default(now())
+  createdAt   DateTime @default(now())
+  incident    incidents? @relation(fields: [incidentId], references: [id])
+  incidentId  Int?
+}
+
+model incidents {
+  id              Int      @id @default(autoincrement())
+  serviceKey      String
+  severity        String
+  status          String   @default("open") // open / resolved
+  description     String?
+  acknowledgedAt  DateTime?
+  createdAt       DateTime @default(now())
+  resolvedAt      DateTime?
+  signals         signals[]
+}

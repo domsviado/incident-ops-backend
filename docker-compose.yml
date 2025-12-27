@@ -1,0 +1,16 @@
+version: "3.9"
+services:
+  db:
+    image: postgres:15
+    container_name: incident-ops-db
+    environment:
+      POSTGRES_USER: incident-ops
+      POSTGRES_PASSWORD: incident-ops
+      POSTGRES_DB: incident-ops
+    ports:
+      - "5432:5432"
+    volumes:
+      - db_data:/var/lib/postgresql/data
+
+volumes:
+  db_data:
