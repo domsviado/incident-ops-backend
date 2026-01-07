@@ -2,8 +2,8 @@ import "dotenv/config";
 
 import express from "express";
 
-import signalRoutes from "./routes/signals.routes";
-import incidentRoutes from "./routes/incidents.rotues";
+import signalRoutes from "./routes/signal.routes";
+import incidentRoutes from "./routes/incident.routes";
 
 const app = express();
 

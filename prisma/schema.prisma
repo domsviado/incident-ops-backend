@@ -13,6 +13,7 @@ model signals {
   serviceKey  String
   type        String
   severity    String
+  processed   Boolean   @default(false)
   value       Float?
   window      String?
   timestamp   DateTime @default(now())
@@ -25,7 +26,7 @@ model incidents {
   id              Int      @id @default(autoincrement())
   serviceKey      String
   severity        String
-  status          String   @default("open") // open / resolved
+  status          String   @default("open") // "open", "acknowledged", "resolved"
   description     String?
   acknowledgedAt  DateTime?
   createdAt       DateTime @default(now())

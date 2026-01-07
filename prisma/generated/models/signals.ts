@@ -44,6 +44,7 @@ export type SignalsMinAggregateOutputType = {
   serviceKey: string | null
   type: string | null
   severity: string | null
+  processed: boolean | null
   value: number | null
   window: string | null
   timestamp: Date | null
@@ -57,6 +58,7 @@ export type SignalsMaxAggregateOutputType = {
   serviceKey: string | null
   type: string | null
   severity: string | null
+  processed: boolean | null
   value: number | null
   window: string | null
   timestamp: Date | null
@@ -70,6 +72,7 @@ export type SignalsCountAggregateOutputType = {
   serviceKey: number
   type: number
   severity: number
+  processed: number
   value: number
   window: number
   timestamp: number
@@ -97,6 +100,7 @@ export type SignalsMinAggregateInputType = {
   serviceKey?: true
   type?: true
   severity?: true
+  processed?: true
   value?: true
   window?: true
   timestamp?: true
@@ -110,6 +114,7 @@ export type SignalsMaxAggregateInputType = {
   serviceKey?: true
   type?: true
   severity?: true
+  processed?: true
   value?: true
   window?: true
   timestamp?: true
@@ -123,6 +128,7 @@ export type SignalsCountAggregateInputType = {
   serviceKey?: true
   type?: true
   severity?: true
+  processed?: true
   value?: true
   window?: true
   timestamp?: true
@@ -223,6 +229,7 @@ export type SignalsGroupByOutputType = {
   serviceKey: string
   type: string
   severity: string
+  processed: boolean
   value: number | null
   window: string | null
   timestamp: Date
@@ -259,6 +266,7 @@ export type signalsWhereInput = {
   serviceKey?: Prisma.StringFilter<"signals"> | string
   type?: Prisma.StringFilter<"signals"> | string
   severity?: Prisma.StringFilter<"signals"> | string
+  processed?: Prisma.BoolFilter<"signals"> | boolean
   value?: Prisma.FloatNullableFilter<"signals"> | number | null
   window?: Prisma.StringNullableFilter<"signals"> | string | null
   timestamp?: Prisma.DateTimeFilter<"signals"> | Date | string
@@ -273,6 +281,7 @@ export type signalsOrderByWithRelationInput = {
   serviceKey?: Prisma.SortOrder
   type?: Prisma.SortOrder
   severity?: Prisma.SortOrder
+  processed?: Prisma.SortOrder
   value?: Prisma.SortOrderInput | Prisma.SortOrder
   window?: Prisma.SortOrderInput | Prisma.SortOrder
   timestamp?: Prisma.SortOrder
@@ -290,6 +299,7 @@ export type signalsWhereUniqueInput = Prisma.AtLeast<{
   serviceKey?: Prisma.StringFilter<"signals"> | string
   type?: Prisma.StringFilter<"signals"> | string
   severity?: Prisma.StringFilter<"signals"> | string
+  processed?: Prisma.BoolFilter<"signals"> | boolean
   value?: Prisma.FloatNullableFilter<"signals"> | number | null
   window?: Prisma.StringNullableFilter<"signals"> | string | null
   timestamp?: Prisma.DateTimeFilter<"signals"> | Date | string
@@ -304,6 +314,7 @@ export type signalsOrderByWithAggregationInput = {
   serviceKey?: Prisma.SortOrder
   type?: Prisma.SortOrder
   severity?: Prisma.SortOrder
+  processed?: Prisma.SortOrder
   value?: Prisma.SortOrderInput | Prisma.SortOrder
   window?: Prisma.SortOrderInput | Prisma.SortOrder
   timestamp?: Prisma.SortOrder
@@ -325,6 +336,7 @@ export type signalsScalarWhereWithAggregatesInput = {
   serviceKey?: Prisma.StringWithAggregatesFilter<"signals"> | string
   type?: Prisma.StringWithAggregatesFilter<"signals"> | string
   severity?: Prisma.StringWithAggregatesFilter<"signals"> | string
+  processed?: Prisma.BoolWithAggregatesFilter<"signals"> | boolean
   value?: Prisma.FloatNullableWithAggregatesFilter<"signals"> | number | null
   window?: Prisma.StringNullableWithAggregatesFilter<"signals"> | string | null
   timestamp?: Prisma.DateTimeWithAggregatesFilter<"signals"> | Date | string
@@ -337,6 +349,7 @@ export type signalsCreateInput = {
   serviceKey: string
   type: string
   severity: string
+  processed?: boolean
   value?: number | null
   window?: string | null
   timestamp?: Date | string
@@ -350,6 +363,7 @@ export type signalsUncheckedCreateInput = {
   serviceKey: string
   type: string
   severity: string
+  processed?: boolean
   value?: number | null
   window?: string | null
   timestamp?: Date | string
@@ -362,6 +376,7 @@ export type signalsUpdateInput = {
   serviceKey?: Prisma.StringFieldUpdateOperationsInput | string
   type?: Prisma.StringFieldUpdateOperationsInput | string
   severity?: Prisma.StringFieldUpdateOperationsInput | string
+  processed?: Prisma.BoolFieldUpdateOperationsInput | boolean
   value?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   window?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   timestamp?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -375,6 +390,7 @@ export type signalsUncheckedUpdateInput = {
   serviceKey?: Prisma.StringFieldUpdateOperationsInput | string
   type?: Prisma.StringFieldUpdateOperationsInput | string
   severity?: Prisma.StringFieldUpdateOperationsInput | string
+  processed?: Prisma.BoolFieldUpdateOperationsInput | boolean
   value?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   window?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   timestamp?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -388,6 +404,7 @@ export type signalsCreateManyInput = {
   serviceKey: string
   type: string
   severity: string
+  processed?: boolean
   value?: number | null
   window?: string | null
   timestamp?: Date | string
@@ -400,6 +417,7 @@ export type signalsUpdateManyMutationInput = {
   serviceKey?: Prisma.StringFieldUpdateOperationsInput | string
   type?: Prisma.StringFieldUpdateOperationsInput | string
   severity?: Prisma.StringFieldUpdateOperationsInput | string
+  processed?: Prisma.BoolFieldUpdateOperationsInput | boolean
   value?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   window?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   timestamp?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -412,6 +430,7 @@ export type signalsUncheckedUpdateManyInput = {
   serviceKey?: Prisma.StringFieldUpdateOperationsInput | string
   type?: Prisma.StringFieldUpdateOperationsInput | string
   severity?: Prisma.StringFieldUpdateOperationsInput | string
+  processed?: Prisma.BoolFieldUpdateOperationsInput | boolean
   value?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   window?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   timestamp?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -425,6 +444,7 @@ export type signalsCountOrderByAggregateInput = {
   serviceKey?: Prisma.SortOrder
   type?: Prisma.SortOrder
   severity?: Prisma.SortOrder
+  processed?: Prisma.SortOrder
   value?: Prisma.SortOrder
   window?: Prisma.SortOrder
   timestamp?: Prisma.SortOrder
@@ -444,6 +464,7 @@ export type signalsMaxOrderByAggregateInput = {
   serviceKey?: Prisma.SortOrder
   type?: Prisma.SortOrder
   severity?: Prisma.SortOrder
+  processed?: Prisma.SortOrder
   value?: Prisma.SortOrder
   window?: Prisma.SortOrder
   timestamp?: Prisma.SortOrder
@@ -457,6 +478,7 @@ export type signalsMinOrderByAggregateInput = {
   serviceKey?: Prisma.SortOrder
   type?: Prisma.SortOrder
   severity?: Prisma.SortOrder
+  processed?: Prisma.SortOrder
   value?: Prisma.SortOrder
   window?: Prisma.SortOrder
   timestamp?: Prisma.SortOrder
@@ -482,6 +504,10 @@ export type signalsOrderByRelationAggregateInput = {
 
 export type StringFieldUpdateOperationsInput = {
   set?: string
+}
+
+export type BoolFieldUpdateOperationsInput = {
+  set?: boolean
 }
 
 export type NullableFloatFieldUpdateOperationsInput = {
@@ -563,6 +589,7 @@ export type signalsCreateWithoutIncidentInput = {
   serviceKey: string
   type: string
   severity: string
+  processed?: boolean
   value?: number | null
   window?: string | null
   timestamp?: Date | string
@@ -575,6 +602,7 @@ export type signalsUncheckedCreateWithoutIncidentInput = {
   serviceKey: string
   type: string
   severity: string
+  processed?: boolean
   value?: number | null
   window?: string | null
   timestamp?: Date | string
@@ -616,6 +644,7 @@ export type signalsScalarWhereInput = {
   serviceKey?: Prisma.StringFilter<"signals"> | string
   type?: Prisma.StringFilter<"signals"> | string
   severity?: Prisma.StringFilter<"signals"> | string
+  processed?: Prisma.BoolFilter<"signals"> | boolean
   value?: Prisma.FloatNullableFilter<"signals"> | number | null
   window?: Prisma.StringNullableFilter<"signals"> | string | null
   timestamp?: Prisma.DateTimeFilter<"signals"> | Date | string
@@ -629,6 +658,7 @@ export type signalsCreateManyIncidentInput = {
   serviceKey: string
   type: string
   severity: string
+  processed?: boolean
   value?: number | null
   window?: string | null
   timestamp?: Date | string
@@ -640,6 +670,7 @@ export type signalsUpdateWithoutIncidentInput = {
   serviceKey?: Prisma.StringFieldUpdateOperationsInput | string
   type?: Prisma.StringFieldUpdateOperationsInput | string
   severity?: Prisma.StringFieldUpdateOperationsInput | string
+  processed?: Prisma.BoolFieldUpdateOperationsInput | boolean
   value?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   window?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   timestamp?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -652,6 +683,7 @@ export type signalsUncheckedUpdateWithoutIncidentInput = {
   serviceKey?: Prisma.StringFieldUpdateOperationsInput | string
   type?: Prisma.StringFieldUpdateOperationsInput | string
   severity?: Prisma.StringFieldUpdateOperationsInput | string
+  processed?: Prisma.BoolFieldUpdateOperationsInput | boolean
   value?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   window?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   timestamp?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -664,6 +696,7 @@ export type signalsUncheckedUpdateManyWithoutIncidentInput = {
   serviceKey?: Prisma.StringFieldUpdateOperationsInput | string
   type?: Prisma.StringFieldUpdateOperationsInput | string
   severity?: Prisma.StringFieldUpdateOperationsInput | string
+  processed?: Prisma.BoolFieldUpdateOperationsInput | boolean
   value?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
   window?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   timestamp?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -678,6 +711,7 @@ export type signalsSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs 
   serviceKey?: boolean
   type?: boolean
   severity?: boolean
+  processed?: boolean
   value?: boolean
   window?: boolean
   timestamp?: boolean
@@ -692,6 +726,7 @@ export type signalsSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Exten
   serviceKey?: boolean
   type?: boolean
   severity?: boolean
+  processed?: boolean
   value?: boolean
   window?: boolean
   timestamp?: boolean
@@ -706,6 +741,7 @@ export type signalsSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Exten
   serviceKey?: boolean
   type?: boolean
   severity?: boolean
+  processed?: boolean
   value?: boolean
   window?: boolean
   timestamp?: boolean
@@ -720,6 +756,7 @@ export type signalsSelectScalar = {
   serviceKey?: boolean
   type?: boolean
   severity?: boolean
+  processed?: boolean
   value?: boolean
   window?: boolean
   timestamp?: boolean
@@ -727,7 +764,7 @@ export type signalsSelectScalar = {
   incidentId?: boolean
 }
 
-export type signalsOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "source" | "serviceKey" | "type" | "severity" | "value" | "window" | "timestamp" | "createdAt" | "incidentId", ExtArgs["result"]["signals"]>
+export type signalsOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "source" | "serviceKey" | "type" | "severity" | "processed" | "value" | "window" | "timestamp" | "createdAt" | "incidentId", ExtArgs["result"]["signals"]>
 export type signalsInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   incident?: boolean | Prisma.signals$incidentArgs<ExtArgs>
 }
@@ -749,6 +786,7 @@ export type $signalsPayload<ExtArgs extends runtime.Types.Extensions.InternalArg
     serviceKey: string
     type: string
     severity: string
+    processed: boolean
     value: number | null
     window: string | null
     timestamp: Date
@@ -1183,6 +1221,7 @@ export interface signalsFieldRefs {
   readonly serviceKey: Prisma.FieldRef<"signals", 'String'>
   readonly type: Prisma.FieldRef<"signals", 'String'>
   readonly severity: Prisma.FieldRef<"signals", 'String'>
+  readonly processed: Prisma.FieldRef<"signals", 'Boolean'>
   readonly value: Prisma.FieldRef<"signals", 'Float'>
   readonly window: Prisma.FieldRef<"signals", 'String'>
   readonly timestamp: Prisma.FieldRef<"signals", 'DateTime'>

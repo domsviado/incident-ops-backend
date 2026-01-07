@@ -77,6 +77,7 @@ export const SignalsScalarFieldEnum = {
   serviceKey: 'serviceKey',
   type: 'type',
   severity: 'severity',
+  processed: 'processed',
   value: 'value',
   window: 'window',
   timestamp: 'timestamp',
