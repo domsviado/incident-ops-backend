@@ -1,6 +1,7 @@
 import "dotenv/config";
 
 import express from "express";
+import cors from "cors";
 
 import signalRoutes from "./routes/signal.routes";
 import incidentRoutes from "./routes/incident.routes";
@@ -8,6 +9,14 @@ import incidentRoutes from "./routes/incident.routes";
 const app = express();
 
 app.use(express.json());
+
+app.use(
+  cors({
+    origin: ["http://localhost:3001"],
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    credentials: true,
+  })
+);
 
 app.use("/api/signals", signalRoutes);
 app.use("/api/incidents", incidentRoutes);
