@@ -17,12 +17,24 @@ export const list = async (query: any) => {
   const page = Math.max(Number(query.page ?? 1), 1);
   const pageSize = Math.max(Number(query.pageSize ?? 10), 1);
 
-  return prisma.signals.findMany({
+  const total = await prisma.signals.count();
+
+  const signals = await prisma.signals.findMany({
     include: { incident: true },
     skip: (page - 1) * pageSize,
     take: pageSize,
     orderBy: { createdAt: "desc" },
   });
+
+  return {
+    data: signals,
+    meta: {
+      total,
+      page,
+      pageSize,
+      totalPages: Math.ceil(total / pageSize),
+    },
+  };
 };
 
 export const getById = async (id: number) => {
