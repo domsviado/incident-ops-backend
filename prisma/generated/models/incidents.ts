@@ -36,35 +36,44 @@ export type IncidentsSumAggregateOutputType = {
 
 export type IncidentsMinAggregateOutputType = {
   id: number | null
-  serviceKey: string | null
-  severity: string | null
-  status: string | null
+  title: string | null
   description: string | null
+  status: $Enums.IncidentStatus | null
+  severity: string | null
+  serviceKey: string | null
+  acknowledgedBy: string | null
   acknowledgedAt: Date | null
-  createdAt: Date | null
   resolvedAt: Date | null
+  createdAt: Date | null
+  updatedAt: Date | null
 }
 
 export type IncidentsMaxAggregateOutputType = {
   id: number | null
-  serviceKey: string | null
-  severity: string | null
-  status: string | null
+  title: string | null
   description: string | null
+  status: $Enums.IncidentStatus | null
+  severity: string | null
+  serviceKey: string | null
+  acknowledgedBy: string | null
   acknowledgedAt: Date | null
-  createdAt: Date | null
   resolvedAt: Date | null
+  createdAt: Date | null
+  updatedAt: Date | null
 }
 
 export type IncidentsCountAggregateOutputType = {
   id: number
-  serviceKey: number
-  severity: number
-  status: number
+  title: number
   description: number
+  status: number
+  severity: number
+  serviceKey: number
+  acknowledgedBy: number
   acknowledgedAt: number
-  createdAt: number
   resolvedAt: number
+  createdAt: number
+  updatedAt: number
   _all: number
 }
 
@@ -79,35 +88,44 @@ export type IncidentsSumAggregateInputType = {
 
 export type IncidentsMinAggregateInputType = {
   id?: true
-  serviceKey?: true
-  severity?: true
-  status?: true
+  title?: true
   description?: true
+  status?: true
+  severity?: true
+  serviceKey?: true
+  acknowledgedBy?: true
   acknowledgedAt?: true
-  createdAt?: true
   resolvedAt?: true
+  createdAt?: true
+  updatedAt?: true
 }
 
 export type IncidentsMaxAggregateInputType = {
   id?: true
-  serviceKey?: true
-  severity?: true
-  status?: true
+  title?: true
   description?: true
+  status?: true
+  severity?: true
+  serviceKey?: true
+  acknowledgedBy?: true
   acknowledgedAt?: true
-  createdAt?: true
   resolvedAt?: true
+  createdAt?: true
+  updatedAt?: true
 }
 
 export type IncidentsCountAggregateInputType = {
   id?: true
-  serviceKey?: true
-  severity?: true
-  status?: true
+  title?: true
   description?: true
+  status?: true
+  severity?: true
+  serviceKey?: true
+  acknowledgedBy?: true
   acknowledgedAt?: true
-  createdAt?: true
   resolvedAt?: true
+  createdAt?: true
+  updatedAt?: true
   _all?: true
 }
 
@@ -199,13 +217,16 @@ export type incidentsGroupByArgs<ExtArgs extends runtime.Types.Extensions.Intern
 
 export type IncidentsGroupByOutputType = {
   id: number
-  serviceKey: string
-  severity: string
-  status: string
+  title: string
   description: string | null
+  status: $Enums.IncidentStatus
+  severity: string
+  serviceKey: string
+  acknowledgedBy: string | null
   acknowledgedAt: Date | null
-  createdAt: Date
   resolvedAt: Date | null
+  createdAt: Date
+  updatedAt: Date
   _count: IncidentsCountAggregateOutputType | null
   _avg: IncidentsAvgAggregateOutputType | null
   _sum: IncidentsSumAggregateOutputType | null
@@ -233,25 +254,31 @@ export type incidentsWhereInput = {
   OR?: Prisma.incidentsWhereInput[]
   NOT?: Prisma.incidentsWhereInput | Prisma.incidentsWhereInput[]
   id?: Prisma.IntFilter<"incidents"> | number
-  serviceKey?: Prisma.StringFilter<"incidents"> | string
-  severity?: Prisma.StringFilter<"incidents"> | string
-  status?: Prisma.StringFilter<"incidents"> | string
+  title?: Prisma.StringFilter<"incidents"> | string
   description?: Prisma.StringNullableFilter<"incidents"> | string | null
+  status?: Prisma.EnumIncidentStatusFilter<"incidents"> | $Enums.IncidentStatus
+  severity?: Prisma.StringFilter<"incidents"> | string
+  serviceKey?: Prisma.StringFilter<"incidents"> | string
+  acknowledgedBy?: Prisma.StringNullableFilter<"incidents"> | string | null
   acknowledgedAt?: Prisma.DateTimeNullableFilter<"incidents"> | Date | string | null
-  createdAt?: Prisma.DateTimeFilter<"incidents"> | Date | string
   resolvedAt?: Prisma.DateTimeNullableFilter<"incidents"> | Date | string | null
+  createdAt?: Prisma.DateTimeFilter<"incidents"> | Date | string
+  updatedAt?: Prisma.DateTimeFilter<"incidents"> | Date | string
   signals?: Prisma.SignalsListRelationFilter
 }
 
 export type incidentsOrderByWithRelationInput = {
   id?: Prisma.SortOrder
-  serviceKey?: Prisma.SortOrder
-  severity?: Prisma.SortOrder
-  status?: Prisma.SortOrder
+  title?: Prisma.SortOrder
   description?: Prisma.SortOrderInput | Prisma.SortOrder
+  status?: Prisma.SortOrder
+  severity?: Prisma.SortOrder
+  serviceKey?: Prisma.SortOrder
+  acknowledgedBy?: Prisma.SortOrderInput | Prisma.SortOrder
   acknowledgedAt?: Prisma.SortOrderInput | Prisma.SortOrder
-  createdAt?: Prisma.SortOrder
   resolvedAt?: Prisma.SortOrderInput | Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
   signals?: Prisma.signalsOrderByRelationAggregateInput
 }
 
@@ -260,25 +287,31 @@ export type incidentsWhereUniqueInput = Prisma.AtLeast<{
   AND?: Prisma.incidentsWhereInput | Prisma.incidentsWhereInput[]
   OR?: Prisma.incidentsWhereInput[]
   NOT?: Prisma.incidentsWhereInput | Prisma.incidentsWhereInput[]
-  serviceKey?: Prisma.StringFilter<"incidents"> | string
-  severity?: Prisma.StringFilter<"incidents"> | string
-  status?: Prisma.StringFilter<"incidents"> | string
+  title?: Prisma.StringFilter<"incidents"> | string
   description?: Prisma.StringNullableFilter<"incidents"> | string | null
+  status?: Prisma.EnumIncidentStatusFilter<"incidents"> | $Enums.IncidentStatus
+  severity?: Prisma.StringFilter<"incidents"> | string
+  serviceKey?: Prisma.StringFilter<"incidents"> | string
+  acknowledgedBy?: Prisma.StringNullableFilter<"incidents"> | string | null
   acknowledgedAt?: Prisma.DateTimeNullableFilter<"incidents"> | Date | string | null
-  createdAt?: Prisma.DateTimeFilter<"incidents"> | Date | string
   resolvedAt?: Prisma.DateTimeNullableFilter<"incidents"> | Date | string | null
+  createdAt?: Prisma.DateTimeFilter<"incidents"> | Date | string
+  updatedAt?: Prisma.DateTimeFilter<"incidents"> | Date | string
   signals?: Prisma.SignalsListRelationFilter
 }, "id">
 
 export type incidentsOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
-  serviceKey?: Prisma.SortOrder
-  severity?: Prisma.SortOrder
-  status?: Prisma.SortOrder
+  title?: Prisma.SortOrder
   description?: Prisma.SortOrderInput | Prisma.SortOrder
+  status?: Prisma.SortOrder
+  severity?: Prisma.SortOrder
+  serviceKey?: Prisma.SortOrder
+  acknowledgedBy?: Prisma.SortOrderInput | Prisma.SortOrder
   acknowledgedAt?: Prisma.SortOrderInput | Prisma.SortOrder
-  createdAt?: Prisma.SortOrder
   resolvedAt?: Prisma.SortOrderInput | Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
   _count?: Prisma.incidentsCountOrderByAggregateInput
   _avg?: Prisma.incidentsAvgOrderByAggregateInput
   _max?: Prisma.incidentsMaxOrderByAggregateInput
@@ -291,91 +324,115 @@ export type incidentsScalarWhereWithAggregatesInput = {
   OR?: Prisma.incidentsScalarWhereWithAggregatesInput[]
   NOT?: Prisma.incidentsScalarWhereWithAggregatesInput | Prisma.incidentsScalarWhereWithAggregatesInput[]
   id?: Prisma.IntWithAggregatesFilter<"incidents"> | number
-  serviceKey?: Prisma.StringWithAggregatesFilter<"incidents"> | string
-  severity?: Prisma.StringWithAggregatesFilter<"incidents"> | string
-  status?: Prisma.StringWithAggregatesFilter<"incidents"> | string
+  title?: Prisma.StringWithAggregatesFilter<"incidents"> | string
   description?: Prisma.StringNullableWithAggregatesFilter<"incidents"> | string | null
+  status?: Prisma.EnumIncidentStatusWithAggregatesFilter<"incidents"> | $Enums.IncidentStatus
+  severity?: Prisma.StringWithAggregatesFilter<"incidents"> | string
+  serviceKey?: Prisma.StringWithAggregatesFilter<"incidents"> | string
+  acknowledgedBy?: Prisma.StringNullableWithAggregatesFilter<"incidents"> | string | null
   acknowledgedAt?: Prisma.DateTimeNullableWithAggregatesFilter<"incidents"> | Date | string | null
-  createdAt?: Prisma.DateTimeWithAggregatesFilter<"incidents"> | Date | string
   resolvedAt?: Prisma.DateTimeNullableWithAggregatesFilter<"incidents"> | Date | string | null
+  createdAt?: Prisma.DateTimeWithAggregatesFilter<"incidents"> | Date | string
+  updatedAt?: Prisma.DateTimeWithAggregatesFilter<"incidents"> | Date | string
 }
 
 export type incidentsCreateInput = {
-  serviceKey: string
-  severity: string
-  status?: string
+  title: string
   description?: string | null
+  status?: $Enums.IncidentStatus
+  severity: string
+  serviceKey: string
+  acknowledgedBy?: string | null
   acknowledgedAt?: Date | string | null
-  createdAt?: Date | string
   resolvedAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
   signals?: Prisma.signalsCreateNestedManyWithoutIncidentInput
 }
 
 export type incidentsUncheckedCreateInput = {
   id?: number
-  serviceKey: string
-  severity: string
-  status?: string
+  title: string
   description?: string | null
+  status?: $Enums.IncidentStatus
+  severity: string
+  serviceKey: string
+  acknowledgedBy?: string | null
   acknowledgedAt?: Date | string | null
-  createdAt?: Date | string
   resolvedAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
   signals?: Prisma.signalsUncheckedCreateNestedManyWithoutIncidentInput
 }
 
 export type incidentsUpdateInput = {
-  serviceKey?: Prisma.StringFieldUpdateOperationsInput | string
-  severity?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.StringFieldUpdateOperationsInput | string
+  title?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumIncidentStatusFieldUpdateOperationsInput | $Enums.IncidentStatus
+  severity?: Prisma.StringFieldUpdateOperationsInput | string
+  serviceKey?: Prisma.StringFieldUpdateOperationsInput | string
+  acknowledgedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   acknowledgedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   resolvedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   signals?: Prisma.signalsUpdateManyWithoutIncidentNestedInput
 }
 
 export type incidentsUncheckedUpdateInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
-  serviceKey?: Prisma.StringFieldUpdateOperationsInput | string
-  severity?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.StringFieldUpdateOperationsInput | string
+  title?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumIncidentStatusFieldUpdateOperationsInput | $Enums.IncidentStatus
+  severity?: Prisma.StringFieldUpdateOperationsInput | string
+  serviceKey?: Prisma.StringFieldUpdateOperationsInput | string
+  acknowledgedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   acknowledgedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   resolvedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   signals?: Prisma.signalsUncheckedUpdateManyWithoutIncidentNestedInput
 }
 
 export type incidentsCreateManyInput = {
   id?: number
-  serviceKey: string
-  severity: string
-  status?: string
+  title: string
   description?: string | null
+  status?: $Enums.IncidentStatus
+  severity: string
+  serviceKey: string
+  acknowledgedBy?: string | null
   acknowledgedAt?: Date | string | null
-  createdAt?: Date | string
   resolvedAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
 }
 
 export type incidentsUpdateManyMutationInput = {
-  serviceKey?: Prisma.StringFieldUpdateOperationsInput | string
-  severity?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.StringFieldUpdateOperationsInput | string
+  title?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumIncidentStatusFieldUpdateOperationsInput | $Enums.IncidentStatus
+  severity?: Prisma.StringFieldUpdateOperationsInput | string
+  serviceKey?: Prisma.StringFieldUpdateOperationsInput | string
+  acknowledgedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   acknowledgedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   resolvedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type incidentsUncheckedUpdateManyInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
-  serviceKey?: Prisma.StringFieldUpdateOperationsInput | string
-  severity?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.StringFieldUpdateOperationsInput | string
+  title?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumIncidentStatusFieldUpdateOperationsInput | $Enums.IncidentStatus
+  severity?: Prisma.StringFieldUpdateOperationsInput | string
+  serviceKey?: Prisma.StringFieldUpdateOperationsInput | string
+  acknowledgedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   acknowledgedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   resolvedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type IncidentsNullableScalarRelationFilter = {
@@ -385,13 +442,16 @@ export type IncidentsNullableScalarRelationFilter = {
 
 export type incidentsCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  serviceKey?: Prisma.SortOrder
-  severity?: Prisma.SortOrder
-  status?: Prisma.SortOrder
+  title?: Prisma.SortOrder
   description?: Prisma.SortOrder
+  status?: Prisma.SortOrder
+  severity?: Prisma.SortOrder
+  serviceKey?: Prisma.SortOrder
+  acknowledgedBy?: Prisma.SortOrder
   acknowledgedAt?: Prisma.SortOrder
-  createdAt?: Prisma.SortOrder
   resolvedAt?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
 }
 
 export type incidentsAvgOrderByAggregateInput = {
@@ -400,24 +460,30 @@ export type incidentsAvgOrderByAggregateInput = {
 
 export type incidentsMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  serviceKey?: Prisma.SortOrder
-  severity?: Prisma.SortOrder
-  status?: Prisma.SortOrder
+  title?: Prisma.SortOrder
   description?: Prisma.SortOrder
+  status?: Prisma.SortOrder
+  severity?: Prisma.SortOrder
+  serviceKey?: Prisma.SortOrder
+  acknowledgedBy?: Prisma.SortOrder
   acknowledgedAt?: Prisma.SortOrder
-  createdAt?: Prisma.SortOrder
   resolvedAt?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
 }
 
 export type incidentsMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  serviceKey?: Prisma.SortOrder
-  severity?: Prisma.SortOrder
-  status?: Prisma.SortOrder
+  title?: Prisma.SortOrder
   description?: Prisma.SortOrder
+  status?: Prisma.SortOrder
+  severity?: Prisma.SortOrder
+  serviceKey?: Prisma.SortOrder
+  acknowledgedBy?: Prisma.SortOrder
   acknowledgedAt?: Prisma.SortOrder
-  createdAt?: Prisma.SortOrder
   resolvedAt?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
 }
 
 export type incidentsSumOrderByAggregateInput = {
@@ -440,29 +506,39 @@ export type incidentsUpdateOneWithoutSignalsNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.incidentsUpdateToOneWithWhereWithoutSignalsInput, Prisma.incidentsUpdateWithoutSignalsInput>, Prisma.incidentsUncheckedUpdateWithoutSignalsInput>
 }
 
+export type EnumIncidentStatusFieldUpdateOperationsInput = {
+  set?: $Enums.IncidentStatus
+}
+
 export type NullableDateTimeFieldUpdateOperationsInput = {
   set?: Date | string | null
 }
 
 export type incidentsCreateWithoutSignalsInput = {
-  serviceKey: string
-  severity: string
-  status?: string
+  title: string
   description?: string | null
+  status?: $Enums.IncidentStatus
+  severity: string
+  serviceKey: string
+  acknowledgedBy?: string | null
   acknowledgedAt?: Date | string | null
-  createdAt?: Date | string
   resolvedAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
 }
 
 export type incidentsUncheckedCreateWithoutSignalsInput = {
   id?: number
-  serviceKey: string
-  severity: string
-  status?: string
+  title: string
   description?: string | null
+  status?: $Enums.IncidentStatus
+  severity: string
+  serviceKey: string
+  acknowledgedBy?: string | null
   acknowledgedAt?: Date | string | null
-  createdAt?: Date | string
   resolvedAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
 }
 
 export type incidentsCreateOrConnectWithoutSignalsInput = {
@@ -482,24 +558,30 @@ export type incidentsUpdateToOneWithWhereWithoutSignalsInput = {
 }
 
 export type incidentsUpdateWithoutSignalsInput = {
-  serviceKey?: Prisma.StringFieldUpdateOperationsInput | string
-  severity?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.StringFieldUpdateOperationsInput | string
+  title?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumIncidentStatusFieldUpdateOperationsInput | $Enums.IncidentStatus
+  severity?: Prisma.StringFieldUpdateOperationsInput | string
+  serviceKey?: Prisma.StringFieldUpdateOperationsInput | string
+  acknowledgedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   acknowledgedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   resolvedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type incidentsUncheckedUpdateWithoutSignalsInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
-  serviceKey?: Prisma.StringFieldUpdateOperationsInput | string
-  severity?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.StringFieldUpdateOperationsInput | string
+  title?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumIncidentStatusFieldUpdateOperationsInput | $Enums.IncidentStatus
+  severity?: Prisma.StringFieldUpdateOperationsInput | string
+  serviceKey?: Prisma.StringFieldUpdateOperationsInput | string
+  acknowledgedBy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   acknowledgedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   resolvedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 
@@ -535,51 +617,63 @@ export type IncidentsCountOutputTypeCountSignalsArgs<ExtArgs extends runtime.Typ
 
 export type incidentsSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
-  serviceKey?: boolean
-  severity?: boolean
-  status?: boolean
+  title?: boolean
   description?: boolean
+  status?: boolean
+  severity?: boolean
+  serviceKey?: boolean
+  acknowledgedBy?: boolean
   acknowledgedAt?: boolean
-  createdAt?: boolean
   resolvedAt?: boolean
+  createdAt?: boolean
+  updatedAt?: boolean
   signals?: boolean | Prisma.incidents$signalsArgs<ExtArgs>
   _count?: boolean | Prisma.IncidentsCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["incidents"]>
 
 export type incidentsSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
-  serviceKey?: boolean
-  severity?: boolean
-  status?: boolean
+  title?: boolean
   description?: boolean
+  status?: boolean
+  severity?: boolean
+  serviceKey?: boolean
+  acknowledgedBy?: boolean
   acknowledgedAt?: boolean
-  createdAt?: boolean
   resolvedAt?: boolean
+  createdAt?: boolean
+  updatedAt?: boolean
 }, ExtArgs["result"]["incidents"]>
 
 export type incidentsSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
-  serviceKey?: boolean
-  severity?: boolean
-  status?: boolean
+  title?: boolean
   description?: boolean
+  status?: boolean
+  severity?: boolean
+  serviceKey?: boolean
+  acknowledgedBy?: boolean
   acknowledgedAt?: boolean
-  createdAt?: boolean
   resolvedAt?: boolean
+  createdAt?: boolean
+  updatedAt?: boolean
 }, ExtArgs["result"]["incidents"]>
 
 export type incidentsSelectScalar = {
   id?: boolean
-  serviceKey?: boolean
-  severity?: boolean
-  status?: boolean
+  title?: boolean
   description?: boolean
+  status?: boolean
+  severity?: boolean
+  serviceKey?: boolean
+  acknowledgedBy?: boolean
   acknowledgedAt?: boolean
-  createdAt?: boolean
   resolvedAt?: boolean
+  createdAt?: boolean
+  updatedAt?: boolean
 }
 
-export type incidentsOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "serviceKey" | "severity" | "status" | "description" | "acknowledgedAt" | "createdAt" | "resolvedAt", ExtArgs["result"]["incidents"]>
+export type incidentsOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "title" | "description" | "status" | "severity" | "serviceKey" | "acknowledgedBy" | "acknowledgedAt" | "resolvedAt" | "createdAt" | "updatedAt", ExtArgs["result"]["incidents"]>
 export type incidentsInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   signals?: boolean | Prisma.incidents$signalsArgs<ExtArgs>
   _count?: boolean | Prisma.IncidentsCountOutputTypeDefaultArgs<ExtArgs>
@@ -594,13 +688,16 @@ export type $incidentsPayload<ExtArgs extends runtime.Types.Extensions.InternalA
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: number
-    serviceKey: string
-    severity: string
-    status: string
+    title: string
     description: string | null
+    status: $Enums.IncidentStatus
+    severity: string
+    serviceKey: string
+    acknowledgedBy: string | null
     acknowledgedAt: Date | null
-    createdAt: Date
     resolvedAt: Date | null
+    createdAt: Date
+    updatedAt: Date
   }, ExtArgs["result"]["incidents"]>
   composites: {}
 }
@@ -1026,13 +1123,16 @@ export interface Prisma__incidentsClient<T, Null = never, ExtArgs extends runtim
  */
 export interface incidentsFieldRefs {
   readonly id: Prisma.FieldRef<"incidents", 'Int'>
-  readonly serviceKey: Prisma.FieldRef<"incidents", 'String'>
-  readonly severity: Prisma.FieldRef<"incidents", 'String'>
-  readonly status: Prisma.FieldRef<"incidents", 'String'>
+  readonly title: Prisma.FieldRef<"incidents", 'String'>
   readonly description: Prisma.FieldRef<"incidents", 'String'>
+  readonly status: Prisma.FieldRef<"incidents", 'IncidentStatus'>
+  readonly severity: Prisma.FieldRef<"incidents", 'String'>
+  readonly serviceKey: Prisma.FieldRef<"incidents", 'String'>
+  readonly acknowledgedBy: Prisma.FieldRef<"incidents", 'String'>
   readonly acknowledgedAt: Prisma.FieldRef<"incidents", 'DateTime'>
-  readonly createdAt: Prisma.FieldRef<"incidents", 'DateTime'>
   readonly resolvedAt: Prisma.FieldRef<"incidents", 'DateTime'>
+  readonly createdAt: Prisma.FieldRef<"incidents", 'DateTime'>
+  readonly updatedAt: Prisma.FieldRef<"incidents", 'DateTime'>
 }
     
 

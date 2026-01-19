@@ -94,13 +94,16 @@ export type SignalsScalarFieldEnum = (typeof SignalsScalarFieldEnum)[keyof typeo
 
 export const IncidentsScalarFieldEnum = {
   id: 'id',
-  serviceKey: 'serviceKey',
-  severity: 'severity',
-  status: 'status',
+  title: 'title',
   description: 'description',
+  status: 'status',
+  severity: 'severity',
+  serviceKey: 'serviceKey',
+  acknowledgedBy: 'acknowledgedBy',
   acknowledgedAt: 'acknowledgedAt',
+  resolvedAt: 'resolvedAt',
   createdAt: 'createdAt',
-  resolvedAt: 'resolvedAt'
+  updatedAt: 'updatedAt'
 } as const
 
 export type IncidentsScalarFieldEnum = (typeof IncidentsScalarFieldEnum)[keyof typeof IncidentsScalarFieldEnum]

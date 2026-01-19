@@ -27,11 +27,11 @@ model signals {
 }
 
 model incidents {
-  id          String   @id @default(uuid())
-  title       String
+  id          Int   @id @default(autoincrement())
+  title       String?
   description String?
-  status      IncidentStatus @default(OPEN)
-  severity    Severity
+  status      IncidentStatus @default(open)
+  severity    String
   serviceKey  String
 
   acknowledgedBy String?
@@ -39,7 +39,7 @@ model incidents {
   resolvedAt     DateTime?
 
   createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  updatedAt DateTime @default(now()) @updatedAt
 
   signals   signals[]
 
