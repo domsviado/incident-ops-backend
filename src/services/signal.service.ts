@@ -24,7 +24,6 @@ export const list = async (query: any) => {
   const total = await prisma.signals.count();
 
   const signals = await prisma.signals.findMany({
-    include: { incident: true },
     skip: (page - 1) * pageSize,
     take: pageSize,
     orderBy: { createdAt: "desc" },

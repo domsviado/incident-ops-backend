@@ -1,16 +1,20 @@
 import { Request, Response } from "express";
 import { prisma } from "../prisma/client";
-import { IncidentService } from "../services/incident.service";
+import * as IncidentService from "../services/incident.service";
+import { createIncidentSchema } from "../validation/incident.validation";
 
 export const createIncident = async (req: Request, res: Response) => {
   try {
-    const { serviceKey, severity, status } = req.body;
+    const { error, value } = createIncidentSchema.validate(req.body);
 
-    const incident = await IncidentService.create({
-      serviceKey,
-      severity,
-      status,
-    });
+    if (error) {
+      return res.status(422).json({
+        error: "Validation failed",
+        details: error.details.map((d) => d.message),
+      });
+    }
+
+    const incident = await IncidentService.create(value);
 
     res.status(201).json(incident);
   } catch (error) {
@@ -23,65 +27,22 @@ export const createIncident = async (req: Request, res: Response) => {
 
 export const listIncidents = async (req: Request, res: Response) => {
   try {
-    const {
-      page = "1",
-      pageSize = "10",
-      severity,
-      status,
-      serviceKey,
-    } = req.query;
-
-    const pageNum = Math.max(Number(page), 1);
-    const limit = Math.max(Number(pageSize), 1);
-    const skip = (pageNum - 1) * limit;
-
-    const filters: any = {};
-    if (severity) filters.severity = severity;
-    if (status) filters.status = status;
-    if (serviceKey) filters.serviceKey = serviceKey;
-
-    const [incidents, total] = await Promise.all([
-      prisma.incidents.findMany({
-        where: filters,
-        include: { signals: true },
-        skip,
-        take: limit,
-        orderBy: { createdAt: "desc" },
-      }),
-      prisma.incidents.count({ where: filters }),
-    ]);
-
-    res.json({
-      data: incidents,
-      pagination: {
-        total,
-        page: pageNum,
-        pageSize: limit,
-        totalPages: Math.ceil(total / limit),
-      },
-    });
+    const incidents = await IncidentService.list(req.query);
+    res.json(incidents);
   } catch (error) {
-    console.error(error);
-    res
-      .status(500)
-      .json({ error: "Failed to fetch incidents", details: error });
+    res.status(500).json({ error: "Failed to get incidents", details: error });
   }
 };
 
 export const getIncident = async (req: Request, res: Response) => {
   try {
-    const { id } = req.params;
-
-    const incident = await prisma.incidents.findUnique({
-      where: { id: Number(id) },
-      include: { signals: true },
-    });
+    const incident = await IncidentService.getById(Number(req.params.id));
 
     if (!incident) return res.status(404).json({ error: "Incident not found" });
+
     res.json(incident);
   } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: "Failed to fetch incident", details: error });
+    res.status(500).json({ error: "Failed to get incident", details: error });
   }
 };
 

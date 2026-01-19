@@ -24,14 +24,22 @@ export const createSignal = async (req: Request, res: Response) => {
 };
 
 export const listSignals = async (req: Request, res: Response) => {
-  const signals = await SignalService.list(req.query);
-  res.json(signals);
+  try {
+    const signals = await SignalService.list(req.query);
+    res.json(signals);
+  } catch (error) {
+    res.status(500).json({ error: "Failed to get signal", details: error });
+  }
 };
 
 export const getSignal = async (req: Request, res: Response) => {
-  const signal = await SignalService.getById(Number(req.params.id));
+  try {
+    const signal = await SignalService.getById(Number(req.params.id));
 
-  if (!signal) return res.status(404).json({ error: "Signal not found" });
+    if (!signal) return res.status(404).json({ error: "Signal not found" });
 
-  res.json(signal);
+    res.json(signal);
+  } catch (error) {
+    res.status(500).json({ error: "Failed to get signal", details: error });
+  }
 };

@@ -1,5 +1,5 @@
 import { prisma } from "../prisma/client";
-import { IncidentService } from "./incident.service";
+import * as IncidentService from "./incident.service";
 
 export class SignalProcessor {
   static async process(signalId: number) {
