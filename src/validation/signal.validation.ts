@@ -8,6 +8,7 @@ export const createSignalSchema = Joi.object({
   threshold: Joi.number().optional(),
   metricValue: Joi.number().optional(),
   reason: Joi.string().optional(),
+  region: Joi.string().optional(),
   alarmName: Joi.string().optional(),
   window: Joi.string().optional(),
   timestamp: Joi.date().optional(),

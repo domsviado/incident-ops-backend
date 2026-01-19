@@ -5,7 +5,11 @@ interface CreateSignalInput {
   serviceKey: string;
   type: string;
   severity: "info" | "warning" | "critical";
-  value?: number;
+  metricValue?: number;
+  threshold?: number;
+  reason?: string;
+  region?: string;
+  alarmName?: string;
   window?: string;
 }
 

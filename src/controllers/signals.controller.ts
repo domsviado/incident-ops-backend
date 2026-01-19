@@ -25,7 +25,6 @@ export const createSignal = async (req: Request, res: Response) => {
 
 export const listSignals = async (req: Request, res: Response) => {
   const signals = await SignalService.list(req.query);
-  console.log("signals", signals);
   res.json(signals);
 };
 
