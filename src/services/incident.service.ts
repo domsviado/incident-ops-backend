@@ -4,6 +4,11 @@ interface CreateIncidentInput {
   serviceKey: string;
   severity: string;
   status?: string;
+  acknowledgedBy?: string;
+  acknowledgedAt?: Date;
+  resolvedAt?: Date;
+  title?: string;
+  description?: string;
 }
 
 const STATUS_TRANSITIONS: Record<string, string[]> = {
@@ -111,7 +116,7 @@ export const resolve = async (id: number) => {
 
   return prisma.incidents.update({
     where: { id },
-    data: { status: "resolved" },
+    data: { status: "resolved", resolvedAt: new Date() },
   });
 };
 
@@ -122,7 +127,7 @@ export const getById = async (id: number) => {
   });
 };
 
-export const acknowledge = async (id: number) => {
+export const acknowledge = async (id: number, assignee: string) => {
   const incident = await prisma.incidents.findUnique({
     where: { id },
   });
@@ -134,6 +139,10 @@ export const acknowledge = async (id: number) => {
 
   return prisma.incidents.update({
     where: { id },
-    data: { status: "acknowledged" },
+    data: {
+      status: "acknowledged",
+      acknowledgedBy: assignee,
+      acknowledgedAt: new Date(),
+    },
   });
 };

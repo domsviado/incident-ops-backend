@@ -1,7 +1,10 @@
 import { Request, Response } from "express";
 import { prisma } from "../prisma/client";
 import * as IncidentService from "../services/incident.service";
-import { createIncidentSchema } from "../validation/incident.validation";
+import {
+  createIncidentSchema,
+  acknowledgeIncidentSchema,
+} from "../validation/incident.validation";
 
 export const createIncident = async (req: Request, res: Response) => {
   try {
@@ -48,7 +51,16 @@ export const getIncident = async (req: Request, res: Response) => {
 
 export const acknowledgeIncident = async (req: Request, res: Response) => {
   try {
-    const incident = await IncidentService.acknowledge(Number(req.params.id));
+    const { error, value } = acknowledgeIncidentSchema.validate(req.body);
+
+    if (error) {
+      return res.status(400).json({ error: error.message });
+    }
+
+    const incident = await IncidentService.acknowledge(
+      Number(req.params.id),
+      value.assignee
+    );
     res.json(incident);
   } catch (error) {
     res

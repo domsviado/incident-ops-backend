@@ -14,7 +14,7 @@ const router = Router();
 router.post("/", validateRequest(createIncidentSchema), createIncident);
 router.get("/", listIncidents);
 router.get("/:id", getIncident);
-router.patch("/:id/acknowledge", acknowledgeIncident);
-router.patch("/:id/resolve", resolveIncident);
+router.post("/:id/acknowledge", acknowledgeIncident);
+router.post("/:id/resolve", resolveIncident);
 
 export default router;
