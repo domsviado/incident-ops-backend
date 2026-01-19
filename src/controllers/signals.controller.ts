@@ -1,10 +1,18 @@
 import { Request, Response } from "express";
 import * as SignalService from "../services/signal.service";
 import { SignalProcessor } from "../services/signal-processor";
+import { createSignalSchema } from "../validation/signal.validation";
 
 export const createSignal = async (req: Request, res: Response) => {
   try {
-    const signal = await SignalService.create(req.body);
+    const { error, value } = createSignalSchema.validate(req.body);
+    if (error) {
+      return res.status(422).json({
+        error: "Validation failed",
+        details: error.details.map((d) => d.message),
+      });
+    }
+    const signal = await SignalService.create(value);
 
     await SignalProcessor.process(signal.id);
 

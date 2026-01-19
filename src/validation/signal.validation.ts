@@ -5,7 +5,10 @@ export const createSignalSchema = Joi.object({
   serviceKey: Joi.string().required(),
   type: Joi.string().required(),
   severity: Joi.string().valid("critical", "warning", "info").required(),
-  value: Joi.number().optional(),
+  threshold: Joi.number().optional(),
+  metricValue: Joi.number().optional(),
+  reason: Joi.string().optional(),
+  alarmName: Joi.string().optional(),
   window: Joi.string().optional(),
   timestamp: Joi.date().optional(),
 });

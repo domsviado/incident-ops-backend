@@ -28,13 +28,15 @@ export type AggregateSignals = {
 
 export type SignalsAvgAggregateOutputType = {
   id: number | null
-  value: number | null
+  metricValue: number | null
+  threshold: number | null
   incidentId: number | null
 }
 
 export type SignalsSumAggregateOutputType = {
   id: number | null
-  value: number | null
+  metricValue: number | null
+  threshold: number | null
   incidentId: number | null
 }
 
@@ -45,7 +47,11 @@ export type SignalsMinAggregateOutputType = {
   type: string | null
   severity: string | null
   processed: boolean | null
-  value: number | null
+  metricValue: number | null
+  threshold: number | null
+  reason: string | null
+  alarmName: string | null
+  region: string | null
   window: string | null
   timestamp: Date | null
   createdAt: Date | null
@@ -59,7 +65,11 @@ export type SignalsMaxAggregateOutputType = {
   type: string | null
   severity: string | null
   processed: boolean | null
-  value: number | null
+  metricValue: number | null
+  threshold: number | null
+  reason: string | null
+  alarmName: string | null
+  region: string | null
   window: string | null
   timestamp: Date | null
   createdAt: Date | null
@@ -73,7 +83,11 @@ export type SignalsCountAggregateOutputType = {
   type: number
   severity: number
   processed: number
-  value: number
+  metricValue: number
+  threshold: number
+  reason: number
+  alarmName: number
+  region: number
   window: number
   timestamp: number
   createdAt: number
@@ -84,13 +98,15 @@ export type SignalsCountAggregateOutputType = {
 
 export type SignalsAvgAggregateInputType = {
   id?: true
-  value?: true
+  metricValue?: true
+  threshold?: true
   incidentId?: true
 }
 
 export type SignalsSumAggregateInputType = {
   id?: true
-  value?: true
+  metricValue?: true
+  threshold?: true
   incidentId?: true
 }
 
@@ -101,7 +117,11 @@ export type SignalsMinAggregateInputType = {
   type?: true
   severity?: true
   processed?: true
-  value?: true
+  metricValue?: true
+  threshold?: true
+  reason?: true
+  alarmName?: true
+  region?: true
   window?: true
   timestamp?: true
   createdAt?: true
@@ -115,7 +135,11 @@ export type SignalsMaxAggregateInputType = {
   type?: true
   severity?: true
   processed?: true
-  value?: true
+  metricValue?: true
+  threshold?: true
+  reason?: true
+  alarmName?: true
+  region?: true
   window?: true
   timestamp?: true
   createdAt?: true
@@ -129,7 +153,11 @@ export type SignalsCountAggregateInputType = {
   type?: true
   severity?: true
   processed?: true
-  value?: true
+  metricValue?: true
+  threshold?: true
+  reason?: true
+  alarmName?: true
+  region?: true
   window?: true
   timestamp?: true
   createdAt?: true
@@ -230,7 +258,11 @@ export type SignalsGroupByOutputType = {
   type: string
   severity: string
   processed: boolean
-  value: number | null
+  metricValue: number | null
+  threshold: number | null
+  reason: string | null
+  alarmName: string | null
+  region: string | null
   window: string | null
   timestamp: Date
   createdAt: Date
@@ -267,7 +299,11 @@ export type signalsWhereInput = {
   type?: Prisma.StringFilter<"signals"> | string
   severity?: Prisma.StringFilter<"signals"> | string
   processed?: Prisma.BoolFilter<"signals"> | boolean
-  value?: Prisma.FloatNullableFilter<"signals"> | number | null
+  metricValue?: Prisma.FloatNullableFilter<"signals"> | number | null
+  threshold?: Prisma.FloatNullableFilter<"signals"> | number | null
+  reason?: Prisma.StringNullableFilter<"signals"> | string | null
+  alarmName?: Prisma.StringNullableFilter<"signals"> | string | null
+  region?: Prisma.StringNullableFilter<"signals"> | string | null
   window?: Prisma.StringNullableFilter<"signals"> | string | null
   timestamp?: Prisma.DateTimeFilter<"signals"> | Date | string
   createdAt?: Prisma.DateTimeFilter<"signals"> | Date | string
@@ -282,7 +318,11 @@ export type signalsOrderByWithRelationInput = {
   type?: Prisma.SortOrder
   severity?: Prisma.SortOrder
   processed?: Prisma.SortOrder
-  value?: Prisma.SortOrderInput | Prisma.SortOrder
+  metricValue?: Prisma.SortOrderInput | Prisma.SortOrder
+  threshold?: Prisma.SortOrderInput | Prisma.SortOrder
+  reason?: Prisma.SortOrderInput | Prisma.SortOrder
+  alarmName?: Prisma.SortOrderInput | Prisma.SortOrder
+  region?: Prisma.SortOrderInput | Prisma.SortOrder
   window?: Prisma.SortOrderInput | Prisma.SortOrder
   timestamp?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
@@ -300,7 +340,11 @@ export type signalsWhereUniqueInput = Prisma.AtLeast<{
   type?: Prisma.StringFilter<"signals"> | string
   severity?: Prisma.StringFilter<"signals"> | string
   processed?: Prisma.BoolFilter<"signals"> | boolean
-  value?: Prisma.FloatNullableFilter<"signals"> | number | null
+  metricValue?: Prisma.FloatNullableFilter<"signals"> | number | null
+  threshold?: Prisma.FloatNullableFilter<"signals"> | number | null
+  reason?: Prisma.StringNullableFilter<"signals"> | string | null
+  alarmName?: Prisma.StringNullableFilter<"signals"> | string | null
+  region?: Prisma.StringNullableFilter<"signals"> | string | null
   window?: Prisma.StringNullableFilter<"signals"> | string | null
   timestamp?: Prisma.DateTimeFilter<"signals"> | Date | string
   createdAt?: Prisma.DateTimeFilter<"signals"> | Date | string
@@ -315,7 +359,11 @@ export type signalsOrderByWithAggregationInput = {
   type?: Prisma.SortOrder
   severity?: Prisma.SortOrder
   processed?: Prisma.SortOrder
-  value?: Prisma.SortOrderInput | Prisma.SortOrder
+  metricValue?: Prisma.SortOrderInput | Prisma.SortOrder
+  threshold?: Prisma.SortOrderInput | Prisma.SortOrder
+  reason?: Prisma.SortOrderInput | Prisma.SortOrder
+  alarmName?: Prisma.SortOrderInput | Prisma.SortOrder
+  region?: Prisma.SortOrderInput | Prisma.SortOrder
   window?: Prisma.SortOrderInput | Prisma.SortOrder
   timestamp?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
@@ -337,7 +385,11 @@ export type signalsScalarWhereWithAggregatesInput = {
   type?: Prisma.StringWithAggregatesFilter<"signals"> | string
   severity?: Prisma.StringWithAggregatesFilter<"signals"> | string
   processed?: Prisma.BoolWithAggregatesFilter<"signals"> | boolean
-  value?: Prisma.FloatNullableWithAggregatesFilter<"signals"> | number | null
+  metricValue?: Prisma.FloatNullableWithAggregatesFilter<"signals"> | number | null
+  threshold?: Prisma.FloatNullableWithAggregatesFilter<"signals"> | number | null
+  reason?: Prisma.StringNullableWithAggregatesFilter<"signals"> | string | null
+  alarmName?: Prisma.StringNullableWithAggregatesFilter<"signals"> | string | null
+  region?: Prisma.StringNullableWithAggregatesFilter<"signals"> | string | null
   window?: Prisma.StringNullableWithAggregatesFilter<"signals"> | string | null
   timestamp?: Prisma.DateTimeWithAggregatesFilter<"signals"> | Date | string
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"signals"> | Date | string
@@ -350,7 +402,11 @@ export type signalsCreateInput = {
   type: string
   severity: string
   processed?: boolean
-  value?: number | null
+  metricValue?: number | null
+  threshold?: number | null
+  reason?: string | null
+  alarmName?: string | null
+  region?: string | null
   window?: string | null
   timestamp?: Date | string
   createdAt?: Date | string
@@ -364,7 +420,11 @@ export type signalsUncheckedCreateInput = {
   type: string
   severity: string
   processed?: boolean
-  value?: number | null
+  metricValue?: number | null
+  threshold?: number | null
+  reason?: string | null
+  alarmName?: string | null
+  region?: string | null
   window?: string | null
   timestamp?: Date | string
   createdAt?: Date | string
@@ -377,7 +437,11 @@ export type signalsUpdateInput = {
   type?: Prisma.StringFieldUpdateOperationsInput | string
   severity?: Prisma.StringFieldUpdateOperationsInput | string
   processed?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  value?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  metricValue?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  threshold?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  reason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  alarmName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  region?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   window?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   timestamp?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -391,7 +455,11 @@ export type signalsUncheckedUpdateInput = {
   type?: Prisma.StringFieldUpdateOperationsInput | string
   severity?: Prisma.StringFieldUpdateOperationsInput | string
   processed?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  value?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  metricValue?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  threshold?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  reason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  alarmName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  region?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   window?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   timestamp?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -405,7 +473,11 @@ export type signalsCreateManyInput = {
   type: string
   severity: string
   processed?: boolean
-  value?: number | null
+  metricValue?: number | null
+  threshold?: number | null
+  reason?: string | null
+  alarmName?: string | null
+  region?: string | null
   window?: string | null
   timestamp?: Date | string
   createdAt?: Date | string
@@ -418,7 +490,11 @@ export type signalsUpdateManyMutationInput = {
   type?: Prisma.StringFieldUpdateOperationsInput | string
   severity?: Prisma.StringFieldUpdateOperationsInput | string
   processed?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  value?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  metricValue?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  threshold?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  reason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  alarmName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  region?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   window?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   timestamp?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -431,7 +507,11 @@ export type signalsUncheckedUpdateManyInput = {
   type?: Prisma.StringFieldUpdateOperationsInput | string
   severity?: Prisma.StringFieldUpdateOperationsInput | string
   processed?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  value?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  metricValue?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  threshold?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  reason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  alarmName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  region?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   window?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   timestamp?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -445,7 +525,11 @@ export type signalsCountOrderByAggregateInput = {
   type?: Prisma.SortOrder
   severity?: Prisma.SortOrder
   processed?: Prisma.SortOrder
-  value?: Prisma.SortOrder
+  metricValue?: Prisma.SortOrder
+  threshold?: Prisma.SortOrder
+  reason?: Prisma.SortOrder
+  alarmName?: Prisma.SortOrder
+  region?: Prisma.SortOrder
   window?: Prisma.SortOrder
   timestamp?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
@@ -454,7 +538,8 @@ export type signalsCountOrderByAggregateInput = {
 
 export type signalsAvgOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  value?: Prisma.SortOrder
+  metricValue?: Prisma.SortOrder
+  threshold?: Prisma.SortOrder
   incidentId?: Prisma.SortOrder
 }
 
@@ -465,7 +550,11 @@ export type signalsMaxOrderByAggregateInput = {
   type?: Prisma.SortOrder
   severity?: Prisma.SortOrder
   processed?: Prisma.SortOrder
-  value?: Prisma.SortOrder
+  metricValue?: Prisma.SortOrder
+  threshold?: Prisma.SortOrder
+  reason?: Prisma.SortOrder
+  alarmName?: Prisma.SortOrder
+  region?: Prisma.SortOrder
   window?: Prisma.SortOrder
   timestamp?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
@@ -479,7 +568,11 @@ export type signalsMinOrderByAggregateInput = {
   type?: Prisma.SortOrder
   severity?: Prisma.SortOrder
   processed?: Prisma.SortOrder
-  value?: Prisma.SortOrder
+  metricValue?: Prisma.SortOrder
+  threshold?: Prisma.SortOrder
+  reason?: Prisma.SortOrder
+  alarmName?: Prisma.SortOrder
+  region?: Prisma.SortOrder
   window?: Prisma.SortOrder
   timestamp?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
@@ -488,7 +581,8 @@ export type signalsMinOrderByAggregateInput = {
 
 export type signalsSumOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  value?: Prisma.SortOrder
+  metricValue?: Prisma.SortOrder
+  threshold?: Prisma.SortOrder
   incidentId?: Prisma.SortOrder
 }
 
@@ -590,7 +684,11 @@ export type signalsCreateWithoutIncidentInput = {
   type: string
   severity: string
   processed?: boolean
-  value?: number | null
+  metricValue?: number | null
+  threshold?: number | null
+  reason?: string | null
+  alarmName?: string | null
+  region?: string | null
   window?: string | null
   timestamp?: Date | string
   createdAt?: Date | string
@@ -603,7 +701,11 @@ export type signalsUncheckedCreateWithoutIncidentInput = {
   type: string
   severity: string
   processed?: boolean
-  value?: number | null
+  metricValue?: number | null
+  threshold?: number | null
+  reason?: string | null
+  alarmName?: string | null
+  region?: string | null
   window?: string | null
   timestamp?: Date | string
   createdAt?: Date | string
@@ -645,7 +747,11 @@ export type signalsScalarWhereInput = {
   type?: Prisma.StringFilter<"signals"> | string
   severity?: Prisma.StringFilter<"signals"> | string
   processed?: Prisma.BoolFilter<"signals"> | boolean
-  value?: Prisma.FloatNullableFilter<"signals"> | number | null
+  metricValue?: Prisma.FloatNullableFilter<"signals"> | number | null
+  threshold?: Prisma.FloatNullableFilter<"signals"> | number | null
+  reason?: Prisma.StringNullableFilter<"signals"> | string | null
+  alarmName?: Prisma.StringNullableFilter<"signals"> | string | null
+  region?: Prisma.StringNullableFilter<"signals"> | string | null
   window?: Prisma.StringNullableFilter<"signals"> | string | null
   timestamp?: Prisma.DateTimeFilter<"signals"> | Date | string
   createdAt?: Prisma.DateTimeFilter<"signals"> | Date | string
@@ -659,7 +765,11 @@ export type signalsCreateManyIncidentInput = {
   type: string
   severity: string
   processed?: boolean
-  value?: number | null
+  metricValue?: number | null
+  threshold?: number | null
+  reason?: string | null
+  alarmName?: string | null
+  region?: string | null
   window?: string | null
   timestamp?: Date | string
   createdAt?: Date | string
@@ -671,7 +781,11 @@ export type signalsUpdateWithoutIncidentInput = {
   type?: Prisma.StringFieldUpdateOperationsInput | string
   severity?: Prisma.StringFieldUpdateOperationsInput | string
   processed?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  value?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  metricValue?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  threshold?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  reason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  alarmName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  region?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   window?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   timestamp?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -684,7 +798,11 @@ export type signalsUncheckedUpdateWithoutIncidentInput = {
   type?: Prisma.StringFieldUpdateOperationsInput | string
   severity?: Prisma.StringFieldUpdateOperationsInput | string
   processed?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  value?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  metricValue?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  threshold?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  reason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  alarmName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  region?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   window?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   timestamp?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -697,7 +815,11 @@ export type signalsUncheckedUpdateManyWithoutIncidentInput = {
   type?: Prisma.StringFieldUpdateOperationsInput | string
   severity?: Prisma.StringFieldUpdateOperationsInput | string
   processed?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  value?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  metricValue?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  threshold?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  reason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  alarmName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  region?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   window?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   timestamp?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -712,7 +834,11 @@ export type signalsSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs 
   type?: boolean
   severity?: boolean
   processed?: boolean
-  value?: boolean
+  metricValue?: boolean
+  threshold?: boolean
+  reason?: boolean
+  alarmName?: boolean
+  region?: boolean
   window?: boolean
   timestamp?: boolean
   createdAt?: boolean
@@ -727,7 +853,11 @@ export type signalsSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Exten
   type?: boolean
   severity?: boolean
   processed?: boolean
-  value?: boolean
+  metricValue?: boolean
+  threshold?: boolean
+  reason?: boolean
+  alarmName?: boolean
+  region?: boolean
   window?: boolean
   timestamp?: boolean
   createdAt?: boolean
@@ -742,7 +872,11 @@ export type signalsSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Exten
   type?: boolean
   severity?: boolean
   processed?: boolean
-  value?: boolean
+  metricValue?: boolean
+  threshold?: boolean
+  reason?: boolean
+  alarmName?: boolean
+  region?: boolean
   window?: boolean
   timestamp?: boolean
   createdAt?: boolean
@@ -757,14 +891,18 @@ export type signalsSelectScalar = {
   type?: boolean
   severity?: boolean
   processed?: boolean
-  value?: boolean
+  metricValue?: boolean
+  threshold?: boolean
+  reason?: boolean
+  alarmName?: boolean
+  region?: boolean
   window?: boolean
   timestamp?: boolean
   createdAt?: boolean
   incidentId?: boolean
 }
 
-export type signalsOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "source" | "serviceKey" | "type" | "severity" | "processed" | "value" | "window" | "timestamp" | "createdAt" | "incidentId", ExtArgs["result"]["signals"]>
+export type signalsOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "source" | "serviceKey" | "type" | "severity" | "processed" | "metricValue" | "threshold" | "reason" | "alarmName" | "region" | "window" | "timestamp" | "createdAt" | "incidentId", ExtArgs["result"]["signals"]>
 export type signalsInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   incident?: boolean | Prisma.signals$incidentArgs<ExtArgs>
 }
@@ -787,7 +925,11 @@ export type $signalsPayload<ExtArgs extends runtime.Types.Extensions.InternalArg
     type: string
     severity: string
     processed: boolean
-    value: number | null
+    metricValue: number | null
+    threshold: number | null
+    reason: string | null
+    alarmName: string | null
+    region: string | null
     window: string | null
     timestamp: Date
     createdAt: Date
@@ -1222,7 +1364,11 @@ export interface signalsFieldRefs {
   readonly type: Prisma.FieldRef<"signals", 'String'>
   readonly severity: Prisma.FieldRef<"signals", 'String'>
   readonly processed: Prisma.FieldRef<"signals", 'Boolean'>
-  readonly value: Prisma.FieldRef<"signals", 'Float'>
+  readonly metricValue: Prisma.FieldRef<"signals", 'Float'>
+  readonly threshold: Prisma.FieldRef<"signals", 'Float'>
+  readonly reason: Prisma.FieldRef<"signals", 'String'>
+  readonly alarmName: Prisma.FieldRef<"signals", 'String'>
+  readonly region: Prisma.FieldRef<"signals", 'String'>
   readonly window: Prisma.FieldRef<"signals", 'String'>
   readonly timestamp: Prisma.FieldRef<"signals", 'DateTime'>
   readonly createdAt: Prisma.FieldRef<"signals", 'DateTime'>

@@ -14,7 +14,11 @@ model signals {
   type        String
   severity    String
   processed   Boolean   @default(false)
-  value       Float?
+  metricValue Float?
+  threshold   Float?
+  reason      String?
+  alarmName   String?
+  region      String?
   window      String?
   timestamp   DateTime @default(now())
   createdAt   DateTime @default(now())
