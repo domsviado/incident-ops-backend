@@ -54,20 +54,27 @@ export class IncidentService {
     return incident;
   }
 
-  static async list({ filters, skip, take }: ListIncidentsInput) {
-    const [incidents, total] = await Promise.all([
-      prisma.incidents.findMany({
-        where: filters,
-        include: { signals: true },
-        skip,
-        take,
-        orderBy: { createdAt: "desc" },
-      }),
-      prisma.incidents.count({ where: filters }),
-    ]);
+  list = async (query: any) => {
+    const page = Math.max(Number(query.page ?? 1), 1);
+    const pageSize = Math.max(Number(query.pageSize ?? 10), 1);
 
-    return { incidents, total };
-  }
+    const total = await prisma.incidents.count();
+
+    const incidents = await prisma.incidents.findMany({
+      skip: (page - 1) * pageSize,
+      take: pageSize,
+      orderBy: { createdAt: "desc" },
+    });
+    return {
+      data: incidents,
+      meta: {
+        total,
+        page,
+        pageSize,
+        totalPages: Math.ceil(total / pageSize),
+      },
+    };
+  };
 
   static async get(id: number) {
     return prisma.incidents.findUnique({
