@@ -27,13 +27,30 @@ model signals {
 }
 
 model incidents {
-  id              Int      @id @default(autoincrement())
-  serviceKey      String
-  severity        String
-  status          String   @default("open") // "open", "acknowledged", "resolved"
-  description     String?
-  acknowledgedAt  DateTime?
-  createdAt       DateTime @default(now())
-  resolvedAt      DateTime?
-  signals         signals[]
+  id          String   @id @default(uuid())
+  title       String
+  description String?
+  status      IncidentStatus @default(OPEN)
+  severity    Severity
+  serviceKey  String
+
+  acknowledgedBy String?
+  acknowledgedAt DateTime?
+  resolvedAt     DateTime?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  signals   signals[]
+
+  @@index([status])
+  @@index([severity])
+  @@index([serviceKey])
+  @@index([createdAt])
+}
+
+enum IncidentStatus {
+  open
+  acknowledged
+  resolved
 }
